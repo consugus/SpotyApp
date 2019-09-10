@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from "rxjs/operators";
-import { pipe } from '@angular/core/src/render3';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +12,14 @@ export class SpotifyService {
   constructor( private http:HttpClient ) {
     console.log("Spotify service cargado");
   }
-  
+
   getHeader(){
-    const token:string =  "BQBATbSErSgl-6-qK5tT8XjqxGi66yOlY8YQdWSBTADVxYmm9_2VJ_xQvNAEHLG_m5gqkK3sC2vnxiVol70";
+    const token:string =  "BQBfaFZDPYtxlGp7bD7OVuYSyv5HIT0g_0YbEYHto3cEwiABu8nCYrdhfoSLA1KH4Xfb4fi8Tb2ylLfEaEU";
     const headers:HttpHeaders = new HttpHeaders({
      Authorization:`Bearer ${token}`
     });
     return headers;
   }
-
 
 
   getNewReleases(){

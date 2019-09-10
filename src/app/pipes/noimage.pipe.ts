@@ -4,18 +4,11 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'noimage'
 })
 export class NoimagePipe implements PipeTransform {
+  // Pipe returns the locale noimage.png URL if images[] doesn't have an image URL specified
+  // in it, or returns the route specified at images[]
 
   transform(images: any[]): string {
-
-    let image:string;
-
-    if(!images || images.length == 0){
-      image =  'assets/img/noimage.png'
-    } else{
-      image = images[1].url
-    }
-
-    return image;
+    return ( (!images || images.length == 0) ?  'assets/img/noimage.png' : images[1].url );
   }
 
 }
