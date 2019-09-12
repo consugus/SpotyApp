@@ -16,6 +16,7 @@ hr {
 .img-circle {
     border-radius: 100%;
     width: 150px;
+    height: 150px;
 }
 
 .card-title,
@@ -65,3 +66,8 @@ hr {
 .fadeIn {
     animation-name: fadeIn;
 }
+
+.card-columns{
+    text-align: center;
+}
+

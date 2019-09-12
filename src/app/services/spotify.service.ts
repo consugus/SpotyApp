@@ -14,7 +14,7 @@ export class SpotifyService {
   }
 
   getHeader(){
-    const token:string =  "BQBfaFZDPYtxlGp7bD7OVuYSyv5HIT0g_0YbEYHto3cEwiABu8nCYrdhfoSLA1KH4Xfb4fi8Tb2ylLfEaEU";
+    const token:string =  "BQDG7oJzCrB56ugOLJfiXoCdfL8Fu23pVfbbZnNQov0XlZH2szoyCvYcflZFnc5QB9vy8Qc1LbuGFiaBx74";
     const headers:HttpHeaders = new HttpHeaders({
      Authorization:`Bearer ${token}`
     });
@@ -28,11 +28,24 @@ export class SpotifyService {
       .pipe( map( (data:any) => data.albums.items ))
   };
 
-  getArtist(str:string){
+  getArtists(str:string){
     const headers:HttpHeaders = this.getHeader();
-    return ( this.http.get(this.url + `search?q=${ str }&type=artist&limit=15`, {headers}) )
-      .pipe( map( (data:any) =>  data.artists.items ))
-   };
+    return ( this.http.get(this.url + `search?q=${ str }&type=artist&limit=15`, { headers }) )
+          .pipe( map( (data:any) =>  data.artists.items ))
+        };
+
+  getArtistById( artistId:string ){
+          const headers:HttpHeaders = this.getHeader();
+          return  ( this.http.get( this.url + `artists/${artistId}` , { headers } ) )
+        }
+
+  getArtistTopTracks( artistId: string){
+    const headers:HttpHeaders = this.getHeader();
+
+    return this.http.get( this.url + `artists/${artistId}` + '/top-tracks?country=es', { headers } )
+          .pipe( map( (data:any) =>  data.tracks ))
+
+   }
 
 
 
